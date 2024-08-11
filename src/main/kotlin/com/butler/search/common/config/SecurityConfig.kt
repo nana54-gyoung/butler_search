@@ -17,7 +17,7 @@ class SecurityConfig {
             .csrf { it.disable() }
             .cors { it.disable() }
             .authorizeHttpRequests{ request ->
-                request.requestMatchers("/search/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN", "ROLE_USER")
+                request.requestMatchers("/search/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_ADMIN", "ROLE_BUTLER", "ROLE_USER")
                 request.anyRequest().authenticated()
             }
             .addFilterBefore(JwtRequestFilter(), UsernamePasswordAuthenticationFilter::class.java)
